@@ -1,0 +1,168 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --font-color: #333333;
+  --background-color: #f5f5f5;
+  --border-radius: 5px;
+  --back-button-weight: 500;
+  --button-font-size: 1rem;
+  --main-title-size: 3rem;
+  --text-size: 1.2rem;
+  --sub-title-size: 1.5rem;
+  --error-color: #e74c3c;
+  --border-color: #201f1f;
+
+  /* Dark mode variables */
+  --dark-primary-color: #2980b9;
+  --dark-secondary-color: #3498db;
+  --dark-font-color: #ecf0f1;
+  --dark-background-color: #1e1e1e;
+  --dark-card-background: #2d2d2d;
+  --dark-border-color: #928c8c;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Dark mode theme */
+body.dark-theme {
+  --primary-color: var(--dark-primary-color);
+  --secondary-color: var(--dark-secondary-color);
+  --font-color: var(--dark-font-color);
+  --background-color: var(--dark-background-color);
+  --card-background: var(--dark-card-background);
+  --border-color: var(--dark-border-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-columns: 1fr;
+  justify-content: space-evenly;
+  height: 100dvh;
+}
+
+.theme-container {
+  position: relative;
+  width: 100%;
+  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#theme-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+}
+
+#theme-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+.main-title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 2rem;
+  align-items: center;
+}
+
+.main-title {
+  font-size: 3rem;
+  color: var(--font-color);
+  text-align: center;
+}
+
+.start-title {
+  font-size: 2rem;
+  color: var(--font-color);
+  text-align: center;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.start-title {
+  color: var(--primary-color);
+  animation: blink 0.8s infinite;
+}
+
+.title-selected {
+  animation: pause;
+  opacity: 1;
+}
+
+.animate-title {
+  animation: blink 0.3s 3;
+}
+
+.main-options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  font-size: var(--button-font-size);
+  font-weight: var(--back-button-weight);
+}
+
+.button:hover {
+  background-color: var(--secondary-color);
+}
+
+.back-button {
+  text-decoration: none;
+  color: var(--font-color);
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+}
+.back-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.configure-button,
+.records-button {
+  text-align: center;
+  color: var(--font-color);
+  font-weight: var(--back-button-weight);
+  font-size: 1rem;
+}

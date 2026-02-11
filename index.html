@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="description" content="Typing App" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Typing App</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="theme-container">
+        <button class="button" id="theme-toggle">Theme</button>
+      </div>
+      <div class="main-title-container">
+        <h1 class="main-title" data-cy="main-title">
+          Welcome to the Typing App
+        </h1>
+        <h3 class="start-title" id="start-title-trigger">
+          Start typing to improve your skills!
+        </h3>
+      </div>
+      <div class="main-options-container">
+        <section>
+          <button class="button configure-button" id="configure-button">
+            Configuration
+          </button>
+        </section>
+        <section>
+          <button class="button records-button" id="records-button">
+            Records
+          </button>
+        </section>
+      </div>
+    </main>
+    <script src="./js/ui.js"></script>
+    <script src="./js/configure.js"></script>
+  </body>
+</html>

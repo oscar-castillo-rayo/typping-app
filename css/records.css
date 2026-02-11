@@ -1,0 +1,12 @@
+.main-options-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.back-button {
+  text-align: center;
+  color: var(--font-color);
+  font-weight: var(--back-button-weight);
+  font-size: 1rem;
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Typing App" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/typing-app.css" />
+    <title>Typing App</title>
+  </head>
+  <body class="dark-theme">
+    <main class="main-container">
+      <div class="theme-container">
+        <button class="button" id="theme-toggle">Theme</button>
+      </div>
+      <section class="main-title-container">
+        <section class="typing-app-title">
+          <h1>Typing App</h1>
+        </section>
+        <section class="typing-info">
+          <div>
+            <p>WPM:</p>
+            <span></span>
+          </div>
+          <div>
+            <p>CPM:</p>
+            <span></span>
+          </div>
+        </section>
+        <section class="typing-app-dashboard">
+          <p class="typing-text" id="typing-text"></p>
+        </section>
+        <section class="typing-info">
+          <p>Key Pressed:</p>
+          <span id="key-pressed"></span>
+        </section>
+      </section>
+      <div class="main-options-container">
+        <section>
+          <button class="button back-button" id="typing-back-button">
+            Back to main menu
+          </button>
+        </section>
+      </div>
+    </main>
+    <script src="../js/ui.js"></script>
+    <script src="../js/typing-app.js"></script>
+  </body>
+</html>

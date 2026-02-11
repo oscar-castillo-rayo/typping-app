@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/configure.css" />
+    <title>Configure</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="theme-container">
+        <button class="button" id="theme-toggle">Theme</button>
+      </div>
+      <section class="main-title-container">
+        <h1 class="main-title">Configure</h1>
+        <div class="upload-text-section">
+          <h3 class="upload-text-title">
+            Upload a custom text or type your own
+          </h3>
+          <section class="upload-text-container">
+            <div class="upload-text-input-container">
+              <input
+                type="file"
+                id="file-input"
+                accept=".txt"
+                title="Upload a text file"
+              />
+              <span id="file-error-message" class="error-message"></span>
+            </div>
+            <div class="text-preview-container" id="text-preview-container">
+              <textarea
+                id="text-input"
+                class="text-input"
+                placeholder="Type your text here..."
+              ></textarea>
+            </div>
+            <button class="button upload-text-button" id="upload-text-button">
+              Use this text
+            </button>
+          </section>
+        </div>
+      </section>
+      <div class="main-options-container">
+        <section>
+          <button class="button back-button" id="configure-back-button">
+            Back to main menu
+          </button>
+        </section>
+      </div>
+    </main>
+    <script src="../js/ui.js"></script>
+    <script src="../js/configure.js"></script>
+  </body>
+</html>
