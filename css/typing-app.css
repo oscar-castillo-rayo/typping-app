@@ -14,11 +14,16 @@
   border-radius: var(--border-radius);
   padding: 3rem;
   width: 100%;
-  max-width: 800px;
-  min-height: 250px;
+  max-width: 1200px;
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   position: relative;
-  overflow: hidden;
+}
+
+.typing-box::-webkit-scrollbar {
+  width: 0;
 }
 
 .typing-box::before {
@@ -32,8 +37,8 @@
 
 .typing-text {
   font-family: var(--font-mono);
-  font-size: 1.8rem;
-  line-height: 1.8;
+  font-size: 1.5rem;
+  line-height: 1.5;
   color: var(--text-secondary);
   text-align: left;
   letter-spacing: 2px;
@@ -79,7 +84,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   margin-top: 2rem;
   padding: 1rem 2rem;
   border-top: 1px solid var(--border-color);
@@ -110,6 +115,7 @@
   font-size: 1.5rem;
   color: var(--accent-color);
   min-width: 40px;
+  min-height: 50px;
   text-align: center;
   background: var(--surface-color);
   padding: 0.5rem;

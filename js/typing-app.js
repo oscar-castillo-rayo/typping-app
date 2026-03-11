@@ -35,6 +35,7 @@ function initializeTyping() {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Backspace") {
+    keyPressed.textContent = "←";
     if (textIndex > 0) {
       chars[textIndex].classList.remove("current", "incorrect", "correct");
       textIndex--;
@@ -44,7 +45,6 @@ document.addEventListener("keydown", (event) => {
     return;
   }
 
-  // Ignore modifier keys
   if (event.key.length === 1) {
     keyPressed.textContent = event.key;
 
@@ -63,6 +63,11 @@ document.addEventListener("keydown", (event) => {
         chars[textIndex].classList.add("current");
       }
     }
+  }
+  if (event.code === "Space") {
+    keyPressed.textContent = "Space";
+    event.preventDefault();
+    return;
   }
 });
 
