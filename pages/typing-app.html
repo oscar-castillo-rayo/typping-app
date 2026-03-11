@@ -9,31 +9,35 @@
     <link rel="stylesheet" href="../css/typing-app.css" />
     <title>Typing App</title>
   </head>
-  <body class="dark-theme">
+  <body>
     <main class="main-container">
       <div class="theme-container">
         <button class="button" id="theme-toggle">Theme</button>
       </div>
       <section class="main-title-container">
         <section class="typing-app-title">
-          <h1>Typing App</h1>
+          <h1 class="main-title">Typing App</h1>
         </section>
-        <section class="typing-info">
-          <div>
-            <p>WPM:</p>
-            <span></span>
-          </div>
-          <div>
-            <p>CPM:</p>
-            <span></span>
-          </div>
-        </section>
+        
         <section class="typing-app-dashboard">
-          <p class="typing-text" id="typing-text"></p>
-        </section>
-        <section class="typing-info">
-          <p>Key Pressed:</p>
-          <span id="key-pressed"></span>
+          <div class="typing-box">
+            <div class="typing-text" id="typing-text"></div>
+          </div>
+          
+          <section class="typing-info">
+            <div class="stat-item">
+              <span class="stat-label">WPM</span>
+              <span class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Key Pressed</span>
+              <span id="key-pressed" class="key-pressed">-</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">CPM</span>
+              <span class="stat-value">0</span>
+            </div>
+          </section>
         </section>
       </section>
       <div class="main-options-container">

@@ -84,3 +84,80 @@
   font-weight: var(--back-button-weight);
   font-size: var(--button-font-size);
 }
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 100%;
+  min-height: 150px;
+  gap: 1rem;
+}
+
+.difficulty-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.card:hover {
+  cursor: pointer;
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+  transition: all var(--transition-speed);
+}
+
+.language-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#language-select {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  font-size: var(--text-size);
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+}
+
+#language-select option {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  font-size: var(--text-size);
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+}
+
+#language-select option:hover {
+  cursor: pointer;
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+  transition: all var(--transition-speed);
+}
+

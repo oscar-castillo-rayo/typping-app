@@ -1,25 +1,67 @@
 const keyPressed = document.getElementById("key-pressed");
-const typingText = document.getElementById("typing-text");
+const typingTextContainer = document.getElementById("typing-text");
 const backbutton = document.getElementById("typing-back-button");
 
 let textIndex = 0;
 const text = getTypingText();
+let chars = [];
 
-typingText.append(text);
+function initializeTyping() {
+  typingTextContainer.innerHTML = "";
+  chars = [];
+
+  if (!text) {
+    typingTextContainer.innerHTML =
+      '<span class="char">Please configure a text first.</span>';
+    return;
+  }
+
+  // Create span for each character
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement("span");
+    // Show spaces explicitly, or just keep them as is.
+    // They will take up width naturally.
+    span.textContent = text[i];
+    span.classList.add("char");
+    typingTextContainer.appendChild(span);
+    chars.push(span);
+  }
+
+  // Set first char as active
+  if (chars.length > 0) {
+    chars[0].classList.add("current");
+  }
+}
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Backspace") {
     if (textIndex > 0) {
+      chars[textIndex].classList.remove("current", "incorrect", "correct");
       textIndex--;
-      typingText.textContent = text.slice(textIndex);
+      chars[textIndex].classList.remove("correct", "incorrect");
+      chars[textIndex].classList.add("current");
     }
     return;
   }
-  if (event.key !== null && event.key !== "") {
+
+  // Ignore modifier keys
+  if (event.key.length === 1) {
     keyPressed.textContent = event.key;
-    if (text[textIndex].toLowerCase() === event.key.toLowerCase()) {
+
+    if (textIndex < text.length) {
+      if (text[textIndex] === event.key) {
+        chars[textIndex].classList.remove("current");
+        chars[textIndex].classList.add("correct");
+      } else {
+        chars[textIndex].classList.remove("current");
+        chars[textIndex].classList.add("incorrect");
+      }
+
       textIndex++;
-      typingText.textContent = text.slice(textIndex);
+
+      if (textIndex < text.length) {
+        chars[textIndex].classList.add("current");
+      }
     }
   }
 });
@@ -32,13 +74,15 @@ if (backbutton) {
 
 function getTypingText() {
   try {
-    const text = localStorage.getItem("typing-text");
-    if (text) {
-      return text;
+    const storedText = localStorage.getItem("typing-text");
+    if (storedText) {
+      return storedText;
     }
-    return "";
+    return "The quick brown fox jumps over the lazy dog. Start typing to see the elegant new design in action!";
   } catch (error) {
     console.error(error);
-    return "";
+    return "Error loading text.";
   }
 }
+
+initializeTyping();

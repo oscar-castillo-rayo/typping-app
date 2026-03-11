@@ -15,32 +15,30 @@
       </div>
       <section class="main-title-container">
         <h1 class="main-title">Configure</h1>
-        <div class="upload-text-section">
-          <h3 class="upload-text-title">
-            Upload a custom text or type your own
-          </h3>
-          <section class="upload-text-container">
-            <div class="upload-text-input-container">
-              <input
-                type="file"
-                id="file-input"
-                accept=".txt"
-                title="Upload a text file"
-              />
-              <span id="file-error-message" class="error-message"></span>
+        <section class="configure-container">
+          <div class="configure-options">
+            <div class="language-container">
+              <label for="language-select">Language</label>
+              <select id="language-select">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+              </select>
             </div>
-            <div class="text-preview-container" id="text-preview-container">
-              <textarea
-                id="text-input"
-                class="text-input"
-                placeholder="Type your text here..."
-              ></textarea>
-            </div>
-            <button class="button upload-text-button" id="upload-text-button">
-              Use this text
+          </div>
+        </section>
+        <section class="difficulty-container">
+          <button class="button" id="easy-button">Easy</button>
+          <button class="button" id="medium-button">Medium</button>
+          <button class="button" id="hard-button">Hard</button>
+        </section>
+        <section class="cards-container" id="cards-container"></section>
+        <section class="custom-text-container">
+          <div class="custom-text-button-container">
+            <button class="button" id="custom-text-button">
+              Add custom text
             </button>
-          </section>
-        </div>
+          </div>
+        </section>
       </section>
       <div class="main-options-container">
         <section>
@@ -52,5 +50,6 @@
     </main>
     <script src="../js/ui.js"></script>
     <script src="../js/configure.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

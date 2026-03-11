@@ -1,4 +1,11 @@
 const configureBackButton = document.getElementById("configure-back-button");
+const cardsContainer = document.getElementById("cards-container");
+const languageSelect = document.getElementById("language-select");
+const easyButton = document.getElementById("easy-button");
+const mediumButton = document.getElementById("medium-button");
+const hardButton = document.getElementById("hard-button");
+const customTextButton = document.getElementById("custom-text-button");
+
 
 if (configureBackButton) {
   configureBackButton.addEventListener("click", () => {
@@ -6,55 +13,79 @@ if (configureBackButton) {
   });
 }
 
-const fileInput = document.getElementById("file-input");
-const uploadTextButton = document.getElementById("upload-text-button");
-const textInput = document.getElementById("text-input");
-const errorMessage = document.getElementById("file-error-message");
-
-try {
-  if (fileInput) {
-    fileInput.addEventListener("change", (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const content = e.target.result;
-          textInput.value = content;
-        };
-        reader.readAsText(file);
-      }
-    });
-  }
-} catch (error) {
-  if (errorMessage) {
-    errorMessage.textContent = error.message;
-  }
+async function loadTexts() {
+  const response = await fetch("/assets/json/texts.json");
+  if (!response.ok) throw new Error("Could not load texts.json");
+  return response.json(); 
 }
 
-if (uploadTextButton) {
-  uploadTextButton.addEventListener("click", () => {
-    const text = textInput.value;
-    if (text) {
-      saveTypingText(text);
-    }
-  });
-}
-
-if (textInput) {
-  textInput.addEventListener("input", () => {
-    const text = textInput.value;
-    if (text) {
-      saveTypingText(text);
-    }
-  });
-}
-
-function saveTypingText(text) {
+async function loadCards(difficulty) {
   try {
-    localStorage.setItem("typing-text", text);
-  } catch (error) {
-    if (errorMessage) {
-      errorMessage.textContent = error.message;
+    const allTexts = await loadTexts();
+    const texts = allTexts[difficulty];
+
+    if (!texts || !cardsContainer) return;
+
+    cardsContainer.innerHTML = "";
+    texts.forEach((text) => {
+      const card = document.createElement("section");
+      card.classList.add("card");
+      card.dataset.location = text.location;
+      card.dataset.id = text.id;
+      card.innerHTML = `
+        <div class="card-text-container">
+          <p class="card-name">${text.name}</p>
+        </div>
+      `;
+      cardsContainer.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Error loading cards:", err);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadCards("easy");
+});
+
+if (easyButton) {
+  easyButton.addEventListener("click", () => {
+    loadCards("easy");
+  });
+}
+
+if (mediumButton) {
+  mediumButton.addEventListener("click", () => {
+    loadCards("medium");
+  });
+}
+
+if (hardButton) {
+  hardButton.addEventListener("click", () => {
+    loadCards("hard");
+  });
+}
+
+if (cardsContainer) {
+  cardsContainer.addEventListener("click", async (event) => {
+    const card = event.target.closest(".card");
+    if (!card) return;
+    const location = card.dataset.location;
+    console.log(location);
+    try {
+      const response = await fetch(location);
+      if (!response.ok) throw new Error("Could not load text file");
+      const content = await response.text();
+      saveTypingText(content);
+      window.location.href = "/pages/typing-app.html";
+    } catch (err) {
+      console.error("Error loading text file:", err);
     }
+  });
+
+  if (customTextButton) {
+    customTextButton.addEventListener("click", () => {
+      window.location.href = "/pages/custom-text.html";
+    });
   }
 }

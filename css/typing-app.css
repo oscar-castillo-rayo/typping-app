@@ -1,50 +1,118 @@
-.typing-app-title {
-  font-size: 2.5rem;
-  color: var(--font-color);
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.typing-info {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 10rem;
-}
-
-.main-options-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 .typing-app-dashboard {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10rem;
   width: 100%;
+  margin-top: 2rem;
+}
+
+/* Typing area styling */
+.typing-box {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  width: 100%;
+  max-width: 800px;
+  min-height: 250px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.typing-box::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at center, rgba(46, 204, 113, 0.05) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .typing-text {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: left;
+  letter-spacing: 2px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Individual character states for typing effect */
+.char {
+  display: inline-block;
+  border-radius: 4px;
+  transition: all 0.1s;
+}
+
+.char.correct {
+  background-color: var(--success-color);
+  color: var(--bg-color); /* Dark text on green background */
+  font-weight: 500;
+}
+
+.char.incorrect {
+  background-color: var(--error-color);
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  color: #fff;
+}
+
+.char.current {
+  background-color: var(--accent-color);
+  color: var(--bg-color); /* Dark text on yellow background */
+  animation: cursorBlink 1s infinite alternate;
+  font-weight: 600;
+}
+
+@keyframes cursorBlink {
+  from { opacity: 1; }
+  to { opacity: 0.8; }
+}
+
+/* Stats Footer */
+.typing-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: var(--primary-color);
+  max-width: 800px;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
   font-size: 2rem;
-  color: var(--font-color);
-  text-align: center;
-  padding: 1rem;
-  border-radius: var(--border-radius);
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .key-pressed {
-  font-size: 2rem;
-  color: var(--font-color);
-}
-
-.back-button {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  min-width: 40px;
   text-align: center;
-  color: var(--test-color);
-  font-weight: var(--back-button-weight);
-  font-size: 1rem;
+  background: var(--surface-color);
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }

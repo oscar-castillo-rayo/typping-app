@@ -1,0 +1,53 @@
+{
+  "easy": [
+    {
+      "id": 1,
+      "name": "El taller de la esquina",
+      "location": "../assets/files/easy/el_taller_de_la_esquina.txt"
+    },
+    {
+      "id": 2,
+      "name": "Tardes en el parque del barrio",
+      "location": "../assets/files/easy/tardes_en_el_parque_del_barrio.txt"
+    },
+    {
+      "id": 3,
+      "name": "Un nuevo dia tranquilo",
+      "location": "../assets/files/easy/un_nuevo_dia_tranquilo.txt"
+    }
+  ],
+  "medium": [
+    {   
+      "id": 1,
+      "name": "Bajo la lluvia inesperada",
+      "location": "../assets/files/medium/bajo_la_lluvia_inesperada.txt"
+    },
+    {
+      "id": 2,
+      "name": "Constancia al final del día",
+      "location": "../assets/files/medium/constancia_al_final_del_dia.txt"
+    },
+    {
+      "id": 3,
+      "name": "El viaje entre montañas",
+      "location": "../assets/files/medium/el_viaje_entre_montanas.txt"
+    }
+  ],
+  "hard": [
+    {
+      "id": 1,
+      "name": "El enigma del manuscrito antiguo",
+      "location": "../assets/files/hard/el_enigma_del_manuscrito_antiguo.txt"
+    },
+    {
+      "id": 2,
+      "name": "Entre estanterías y silencio",
+      "location": "../assets/files/hard/entre_estanterias_y_silencio.txt"
+    },
+    {
+      "id": 3,
+      "name": "La sincronía de la ciudad moderna",
+      "location": "../assets/files/hard/la_sincronia_de_la_ciudad_moderna.txt"
+    }
+  ]
+}
