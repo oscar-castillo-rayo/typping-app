@@ -88,4 +88,17 @@ if (cardsContainer) {
       window.location.href = "/pages/custom-text.html";
     });
   }
+  function saveTypingText(text) {
+  try {
+    localStorage.setItem("typing-text", text);
+  } catch (error) {
+    if (errorMessage) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error.message,
+      });
+    }
+  }
+}
 }
