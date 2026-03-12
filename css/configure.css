@@ -14,12 +14,6 @@
 .upload-text-section {
   width: 100%;
 }
-.back-button {
-  text-align: center;
-  color: var(--font-color);
-  font-weight: var(--back-button-weight);
-  font-size: var(--button-font-size);
-}
 
 .upload-text-title {
   font-size: var(--sub-title-size);

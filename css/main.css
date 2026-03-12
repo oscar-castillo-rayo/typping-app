@@ -87,8 +87,7 @@ body {
   padding-top: 1rem;
 }
 
-.button,
-.back-button {
+.button {
   font-family: var(--font-ui);
   padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius);
@@ -105,8 +104,7 @@ body {
   justify-content: center;
 }
 
-.button:hover,
-.back-button:hover {
+.button:hover {
   border-color: var(--accent-color);
   box-shadow: 0 0 10px rgba(244, 208, 63, 0.1);
   transform: translateY(-1px);

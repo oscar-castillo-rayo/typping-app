@@ -122,3 +122,10 @@
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
 }
+
+.main-options-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+}
