@@ -134,12 +134,68 @@ body {
   animation: fadeIn 0.8s ease-out;
 }
 
-.start-title {
-  font-size: 1.2rem;
-  font-weight: 400;
+/* ── Typing Console CTA ── */
+.typing-console {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  min-width: 400px;
+  min-height: 60px;
+}
+
+.typing-console:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(244, 208, 63, 0.15), var(--glow-shadow);
+}
+
+.typing-console:active {
+  transform: translateY(0);
+}
+
+.console-prefix {
+  color: var(--success-color);
+  font-weight: 600;
+  user-select: none;
+}
+
+.console-text {
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.console-cursor {
   color: var(--accent-color);
-  opacity: 0.9;
-  letter-spacing: 0.5px;
+  font-weight: 300;
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.console-hint {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.main-title-container:hover .console-hint {
+  opacity: 0.6;
 }
 
 /* Options / Footer */

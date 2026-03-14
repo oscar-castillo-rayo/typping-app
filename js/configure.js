@@ -5,7 +5,48 @@ const easyButton = document.getElementById("easy-button");
 const mediumButton = document.getElementById("medium-button");
 const hardButton = document.getElementById("hard-button");
 const customTextButton = document.getElementById("custom-text-button");
+const startButton = document.getElementById("start-button");
 
+if (startButton) {
+  startButton.addEventListener("click", () => {
+    window.location.href = "/pages/typing-app.html";
+  });
+
+  // Typewriter effect
+  const typewriterEl = document.getElementById("typewriter-text");
+  if (typewriterEl) {
+    const phrases = ["ready to type...", "start your lesson...", "improve your speed..."];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const current = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        typewriterEl.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(typeLoop, 1800);
+          return;
+        }
+        setTimeout(typeLoop, 80);
+      } else {
+        typewriterEl.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+        setTimeout(typeLoop, 40);
+      }
+    }
+    typeLoop();
+  }
+}
 
 if (configureBackButton) {
   configureBackButton.addEventListener("click", () => {
