@@ -8,9 +8,7 @@
   width: 100%;
 }
 
-.main-title {
-  font-size: var(--main-title-size);
-}
+
 .upload-text-section {
   width: 100%;
 }
@@ -19,6 +17,20 @@
   font-size: var(--sub-title-size);
   color: var(--font-color);
   text-align: center;
+}
+
+
+.file-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.file-name {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 .upload-text-container {
@@ -50,7 +62,7 @@
   align-items: center;
   width: 100%;
   white-space: pre-wrap;
-  height: 400px;
+  height: 360px;
   overflow-y: auto;
   gap: 0.5rem;
   border: 1px solid var(--border-color);
