@@ -1,21 +1,25 @@
-const configureBackButton = document.getElementById("configure-back-button");
-const cardsContainer = document.getElementById("cards-container");
-const languageSelect = document.getElementById("language-select");
-const easyButton = document.getElementById("easy-button");
-const mediumButton = document.getElementById("medium-button");
-const hardButton = document.getElementById("hard-button");
-const customTextButton = document.getElementById("custom-text-button");
-const startButton = document.getElementById("start-button");
+const configureBackButton = document.getElementById('configure-back-button');
+const cardsContainer = document.getElementById('cards-container');
+const languageSelect = document.getElementById('language-select');
+const easyButton = document.getElementById('easy-button');
+const mediumButton = document.getElementById('medium-button');
+const hardButton = document.getElementById('hard-button');
+const customTextButton = document.getElementById('custom-text-button');
+const startButton = document.getElementById('start-button');
 
 if (startButton) {
-  startButton.addEventListener("click", () => {
-    window.location.href = "/pages/typing-app.html";
+  startButton.addEventListener('click', () => {
+    window.location.href = './pages/typing-app.html';
   });
 
   // Typewriter effect
-  const typewriterEl = document.getElementById("typewriter-text");
+  const typewriterEl = document.getElementById('typewriter-text');
   if (typewriterEl) {
-    const phrases = ["Click to start!", "Ready to type?", "Improve your speed!"];
+    const phrases = [
+      'Click to start!',
+      'Ready to type?',
+      'Improve your speed!',
+    ];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -49,15 +53,15 @@ if (startButton) {
 }
 
 if (configureBackButton) {
-  configureBackButton.addEventListener("click", () => {
-    window.location.href = "/index.html";
+  configureBackButton.addEventListener('click', () => {
+    window.location.href = '/index.html';
   });
 }
 
 async function loadTexts() {
-  const response = await fetch("/assets/json/texts.json");
-  if (!response.ok) throw new Error("Could not load texts.json");
-  return response.json(); 
+  const response = await fetch('../assets/json/texts.json');
+  if (!response.ok) throw new Error('Could not load texts.json');
+  return response.json();
 }
 
 async function loadCards(difficulty) {
@@ -67,10 +71,10 @@ async function loadCards(difficulty) {
 
     if (!texts || !cardsContainer) return;
 
-    cardsContainer.innerHTML = "";
+    cardsContainer.innerHTML = '';
     texts.forEach((text) => {
-      const card = document.createElement("section");
-      card.classList.add("card");
+      const card = document.createElement('section');
+      card.classList.add('card');
       card.dataset.location = text.location;
       card.dataset.id = text.id;
       card.innerHTML = `
@@ -81,65 +85,65 @@ async function loadCards(difficulty) {
       cardsContainer.appendChild(card);
     });
   } catch (err) {
-    console.error("Error loading cards:", err);
+    console.error('Error loading cards:', err);
   }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  loadCards("easy");
+window.addEventListener('DOMContentLoaded', () => {
+  loadCards('easy');
 });
 
 if (easyButton) {
-  easyButton.addEventListener("click", () => {
-    loadCards("easy");
+  easyButton.addEventListener('click', () => {
+    loadCards('easy');
   });
 }
 
 if (mediumButton) {
-  mediumButton.addEventListener("click", () => {
-    loadCards("medium");
+  mediumButton.addEventListener('click', () => {
+    loadCards('medium');
   });
 }
 
 if (hardButton) {
-  hardButton.addEventListener("click", () => {
-    loadCards("hard");
+  hardButton.addEventListener('click', () => {
+    loadCards('hard');
   });
 }
 
 if (cardsContainer) {
-  cardsContainer.addEventListener("click", async (event) => {
-    const card = event.target.closest(".card");
+  cardsContainer.addEventListener('click', async (event) => {
+    const card = event.target.closest('.card');
     if (!card) return;
     const location = card.dataset.location;
     console.log(location);
     try {
       const response = await fetch(location);
-      if (!response.ok) throw new Error("Could not load text file");
+      if (!response.ok) throw new Error('Could not load text file');
       const content = await response.text();
       saveTypingText(content);
-      window.location.href = "/pages/typing-app.html";
+      window.location.href = '../pages/typing-app.html';
     } catch (err) {
-      console.error("Error loading text file:", err);
+      console.error('Error loading text file:', err);
     }
   });
 
   if (customTextButton) {
-    customTextButton.addEventListener("click", () => {
-      window.location.href = "/pages/custom-text.html";
+    customTextButton.addEventListener('click', () => {
+      window.location.href = '../pages/custom-text.html';
     });
   }
   function saveTypingText(text) {
-  try {
-    localStorage.setItem("typing-text", text);
-  } catch (error) {
-    if (errorMessage) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: error.message,
-      });
+    try {
+      localStorage.setItem('typing-text', text);
+    } catch (error) {
+      if (errorMessage) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: error.message,
+        });
+      }
     }
   }
-}
 }
