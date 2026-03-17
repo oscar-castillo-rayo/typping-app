@@ -1,9 +1,9 @@
-const keyPressed = document.getElementById("key-pressed");
-const typingTextContainer = document.getElementById("typing-text");
-const backbutton = document.getElementById("typing-back-button");
-const wpm = document.getElementById("wpm");
-const timerDisplay = document.getElementById("timer");
-const idleOverlay = document.getElementById("idle-overlay");
+const keyPressed = document.getElementById('key-pressed');
+const typingTextContainer = document.getElementById('typing-text');
+const backbutton = document.getElementById('typing-back-button');
+const wpm = document.getElementById('wpm');
+const timerDisplay = document.getElementById('timer');
+const idleOverlay = document.getElementById('idle-overlay');
 
 let textIndex = 0;
 const text = getTypingText();
@@ -11,12 +11,12 @@ let chars = [];
 let totalTextCharacters = text.length;
 
 // ── ATS Timer State ──
-let timerStarted = false;   // Has the user typed the first key?
-let timerPaused = false;    // Is the timer paused due to idle?
-let startTime = 0;          // Date.now() when current segment started
-let accumulatedMs = 0;      // Total ms accumulated from previous segments
-let idleTimeoutId = null;   // setTimeout ID for idle detection
-let animFrameId = null;     // requestAnimationFrame ID for live display
+let timerStarted = false; // Has the user typed the first key?
+let timerPaused = false; // Is the timer paused due to idle?
+let startTime = 0; // Date.now() when current segment started
+let accumulatedMs = 0; // Total ms accumulated from previous segments
+let idleTimeoutId = null; // setTimeout ID for idle detection
+let animFrameId = null; // requestAnimationFrame ID for live display
 let lessonComplete = false; // Has the user finished the entire text?
 
 const IDLE_TIMEOUT_MS = 10000; // 10 seconds
@@ -34,7 +34,7 @@ function formatTime(ms) {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
   const tenths = Math.floor((ms % 1000) / 100);
-  return `${minutes}:${String(seconds).padStart(2, "0")}.${tenths}`;
+  return `${minutes}:${String(seconds).padStart(2, '0')}.${tenths}`;
 }
 
 // ── Live timer display loop ──
@@ -101,8 +101,8 @@ function resetTimer() {
   idleTimeoutId = null;
   lessonComplete = false;
   hideIdleOverlay();
-  if (timerDisplay) timerDisplay.textContent = "0:00.0";
-  wpm.textContent = "0";
+  if (timerDisplay) timerDisplay.textContent = '0:00.0';
+  wpm.textContent = '0';
 }
 
 // ── Reset the idle countdown ──
@@ -115,17 +115,17 @@ function resetIdleTimeout() {
 
 // ── Overlay helpers ──
 function showIdleOverlay() {
-  if (idleOverlay) idleOverlay.classList.add("visible");
+  if (idleOverlay) idleOverlay.classList.add('visible');
 }
 function hideIdleOverlay() {
-  if (idleOverlay) idleOverlay.classList.remove("visible");
+  if (idleOverlay) idleOverlay.classList.remove('visible');
 }
 
 // ── Count correct characters ──
 function countCorrectChars() {
   let count = 0;
   for (let i = 0; i < textIndex; i++) {
-    if (chars[i] && chars[i].classList.contains("correct")) {
+    if (chars[i] && chars[i].classList.contains('correct')) {
       count++;
     }
   }
@@ -143,7 +143,7 @@ function calculateWPM() {
 }
 
 function initializeTyping() {
-  typingTextContainer.innerHTML = "";
+  typingTextContainer.innerHTML = '';
   chars = [];
 
   if (!text) {
@@ -154,31 +154,30 @@ function initializeTyping() {
 
   // Create span for each character
   for (let i = 0; i < text.length; i++) {
-    const span = document.createElement("span");
+    const span = document.createElement('span');
     span.textContent = text[i];
-    span.classList.add("char");
+    span.classList.add('char');
     typingTextContainer.appendChild(span);
     chars.push(span);
   }
 
   // Set first char as active
   if (chars.length > 0) {
-    chars[0].classList.add("current");
+    chars[0].classList.add('current');
   }
-
 }
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener('keydown', (event) => {
   // If lesson is complete, ignore all keystrokes
   if (lessonComplete) return;
 
-  if (event.key === "Backspace") {
-    keyPressed.textContent = "←";
+  if (event.key === 'Backspace') {
+    keyPressed.textContent = '←';
     if (textIndex > 0) {
-      chars[textIndex].classList.remove("current", "incorrect", "correct");
+      chars[textIndex].classList.remove('current', 'incorrect', 'correct');
       textIndex--;
-      chars[textIndex].classList.remove("correct", "incorrect");
-      chars[textIndex].classList.add("current");
+      chars[textIndex].classList.remove('correct', 'incorrect');
+      chars[textIndex].classList.add('current');
 
       // If all characters are deleted, reset the timer
       if (textIndex === 0) {
@@ -204,17 +203,17 @@ document.addEventListener("keydown", (event) => {
 
     if (textIndex < text.length) {
       if (text[textIndex] === event.key) {
-        chars[textIndex].classList.remove("current");
-        chars[textIndex].classList.add("correct");
+        chars[textIndex].classList.remove('current');
+        chars[textIndex].classList.add('correct');
       } else {
-        chars[textIndex].classList.remove("current");
-        chars[textIndex].classList.add("incorrect");
+        chars[textIndex].classList.remove('current');
+        chars[textIndex].classList.add('incorrect');
       }
 
       textIndex++;
 
       if (textIndex < text.length) {
-        chars[textIndex].classList.add("current");
+        chars[textIndex].classList.add('current');
       }
     }
     if (textIndex === text.length) {
@@ -223,8 +222,8 @@ document.addEventListener("keydown", (event) => {
       return;
     }
   }
-  if (event.code === "Space") {
-    keyPressed.textContent = "Space";
+  if (event.code === 'Space') {
+    keyPressed.textContent = 'Space';
     event.preventDefault();
     return;
   }
@@ -232,23 +231,24 @@ document.addEventListener("keydown", (event) => {
 });
 
 if (backbutton) {
-  backbutton.addEventListener("click", () => {
-    window.location.href = "/index.html";
+  backbutton.addEventListener('click', () => {
+    window.location.href = '../index.html';
   });
 }
 
 function getTypingText() {
   try {
-    const storedText = localStorage.getItem("typing-text");
+    const storedText = localStorage.getItem('typing-text');
     if (storedText) {
       return storedText;
     }
-    const defaultText = "This is a sample text to demonstrate how typing speed is calculated.";
+    const defaultText =
+      'This is a sample text to demonstrate how typing speed is calculated.';
 
     return defaultText;
   } catch (error) {
     console.error(error);
-    return "Error loading text.";
+    return 'Error loading text.';
   }
 }
 

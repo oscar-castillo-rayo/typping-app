@@ -9,7 +9,7 @@ const startButton = document.getElementById('start-button');
 
 if (startButton) {
   startButton.addEventListener('click', () => {
-    window.location.href = './pages/typing-app.html';
+    window.location.href = '../pages/typing-app.html';
   });
 
   // Typewriter effect
@@ -54,7 +54,7 @@ if (startButton) {
 
 if (configureBackButton) {
   configureBackButton.addEventListener('click', () => {
-    window.location.href = '/index.html';
+    window.location.href = '../index.html';
   });
 }
 
