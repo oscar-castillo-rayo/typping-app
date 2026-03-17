@@ -268,7 +268,7 @@ body .swal2-container .swal2-html-container {
 }
 
 /* SweetAlert2 Confirm Button to look like standard App button */
-body .swal2-container .swal2-styled.swal2-confirm {
+body .swal2-container .swal2-styled.swal2-confirm, .swal2-container .swal2-styled.swal2-cancel {
   font-family: var(--font-ui) !important;
   padding: 0.6rem 1.2rem !important;
   border-radius: var(--border-radius) !important;
@@ -282,7 +282,8 @@ body .swal2-container .swal2-styled.swal2-confirm {
   box-shadow: none !important;
 }
 
-body .swal2-container .swal2-styled.swal2-confirm:hover {
+body .swal2-container .swal2-styled.swal2-confirm:hover,
+.swal2-container .swal2-styled.swal2-cancel:hover {
   border-color: var(--accent-color) !important;
   box-shadow: 0 0 10px rgba(244, 208, 63, 0.1) !important;
   transform: translateY(-1px) !important;
@@ -308,4 +309,12 @@ body .swal2-icon.swal2-success [class^='swal2-success-line'] {
 body .swal2-icon.swal2-success .swal2-success-ring {
   border-color: rgba(46, 204, 113, 0.3) !important;
 }
+
+/* SweetAlert2 Question Icon adjustments */
+body .swal2-icon.swal2-question {
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+}
+
+
 

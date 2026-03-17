@@ -15,7 +15,7 @@ if (startButton) {
   // Typewriter effect
   const typewriterEl = document.getElementById("typewriter-text");
   if (typewriterEl) {
-    const phrases = ["ready to type...", "start your lesson...", "improve your speed..."];
+    const phrases = ["Click to start!", "Ready to type?", "Improve your speed!"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
