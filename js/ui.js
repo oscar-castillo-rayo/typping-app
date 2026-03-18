@@ -16,7 +16,7 @@ if (startTitleTrigger) {
     startTitleTrigger.classList.add('animate-title');
     setTimeout(() => {
       console.log('click');
-      window.location.href = './pages/typing-app.html';
+      window.location.href = '../pages/typing-app.html';
     }, 1500);
   });
 }
@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 if (configureButton) {
   configureButton.addEventListener('click', () => {
-    window.location.href = './pages/configure.html';
+    window.location.href = '../pages/configure.html';
   });
 }
 
 if (recordsButton) {
   recordsButton.addEventListener('click', () => {
-    window.location.href = './pages/records.html';
+    window.location.href = '../pages/records.html';
   });
 }
