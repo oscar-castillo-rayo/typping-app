@@ -47,6 +47,7 @@ if (uploadTextButton) {
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {
+            saveTypingText(text);
             window.location.href = '../pages/typing-app.html';
           });
         } else if (result.isDenied) {
@@ -87,6 +88,6 @@ function saveTypingText(text) {
 }
 if (configureBackButton) {
   configureBackButton.addEventListener('click', () => {
-    window.location.href = '../pages/configure.html';
+    window.location.href = './pages/configure.html';
   });
 }

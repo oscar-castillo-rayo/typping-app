@@ -4,6 +4,7 @@ const backbutton = document.getElementById('typing-back-button');
 const wpm = document.getElementById('wpm');
 const timerDisplay = document.getElementById('timer');
 const idleOverlay = document.getElementById('idle-overlay');
+const accuracy = document.getElementById('accuracy');
 
 let textIndex = 0;
 const text = getTypingText();
@@ -121,6 +122,16 @@ function hideIdleOverlay() {
   if (idleOverlay) idleOverlay.classList.remove('visible');
 }
 
+//Calculate accuracy
+function calculateAccuracy() {
+  if (textIndex === 0) return 0;
+  const correctChars = countCorrectChars();
+  console.log('correctChars', correctChars);
+  const totalChars = textIndex;
+  console.log('totalChars', totalChars);
+  return Math.round((correctChars / totalChars) * 100);
+}
+
 // ── Count correct characters ──
 function countCorrectChars() {
   let count = 0;
@@ -187,11 +198,17 @@ document.addEventListener('keydown', (event) => {
       }
     }
     wpm.textContent = calculateWPM();
+    accuracy.textContent = calculateAccuracy();
     return;
   }
 
   if (event.key.length === 1) {
-    keyPressed.textContent = event.key;
+    keyPressed.textContent = event.key === ' ' ? 'Space' : event.key;
+
+    // Prevent page scroll on Space
+    if (event.code === 'Space') {
+      event.preventDefault();
+    }
 
     // ── Timer logic on keystroke ──
     if (!timerStarted) {
@@ -216,18 +233,16 @@ document.addEventListener('keydown', (event) => {
         chars[textIndex].classList.add('current');
       }
     }
+
+    // Update stats after every keystroke
+    wpm.textContent = calculateWPM();
+    accuracy.textContent = calculateAccuracy();
+
     if (textIndex === text.length) {
       stopTimer();
-      wpm.textContent = calculateWPM();
       return;
     }
   }
-  if (event.code === 'Space') {
-    keyPressed.textContent = 'Space';
-    event.preventDefault();
-    return;
-  }
-  wpm.textContent = calculateWPM();
 });
 
 if (backbutton) {
