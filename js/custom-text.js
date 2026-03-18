@@ -88,6 +88,6 @@ function saveTypingText(text) {
 }
 if (configureBackButton) {
   configureBackButton.addEventListener('click', () => {
-    window.location.href = './pages/configure.html';
+    window.location.href = '../pages/configure.html';
   });
 }
