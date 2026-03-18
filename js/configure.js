@@ -7,9 +7,14 @@ const hardButton = document.getElementById('hard-button');
 const customTextButton = document.getElementById('custom-text-button');
 const startButton = document.getElementById('start-button');
 
+// Detect if we're at the root (index.html) or inside pages/
+const isRoot = window.location.pathname.endsWith('/') ||
+               window.location.pathname.endsWith('/index.html') ||
+               !window.location.pathname.includes('/pages/');
+
 if (startButton) {
   startButton.addEventListener('click', () => {
-    window.location.href = '../pages/typing-app.html';
+    window.location.href = isRoot ? './pages/typing-app.html' : '../pages/typing-app.html';
   });
 
   // Typewriter effect
